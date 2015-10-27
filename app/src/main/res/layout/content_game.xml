@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/activity_game" tools:context="com.example.joris.sojo_racism.GameActivity">
+
+    <!-- Overcoupeling layout, containing three others, the categories, the input and the buttons-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <!-- The layout for the buttons-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1.0">
+
+            <TextView
+                android:id="@+id/leftGameCatagory"
+                android:text="Left catagory"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight=".5"
+                android:gravity="left|center"
+                />
+
+            <TextView
+                android:id="@+id/rightGameCatagory"
+                android:text="right catagory"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight=".5"
+                android:gravity="right|center"
+                />
+
+        </LinearLayout>
+
+        <!-- The layout for the buttons-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1.0"
+            android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/leftGameButton"
+            android:text="@string/leftGameButtonText"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_weight=".5"
+            />
+
+        <Button
+            android:id="@+id/rightGameButton"
+            android:text="@string/rightGameButtonText"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_weight=".5"
+            />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>
