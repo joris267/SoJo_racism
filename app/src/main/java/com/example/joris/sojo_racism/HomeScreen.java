@@ -1,5 +1,6 @@
 package com.example.joris.sojo_racism;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -8,6 +9,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import java.util.ArrayList;
 
 public class HomeScreen extends AppCompatActivity {
 
@@ -27,6 +31,27 @@ public class HomeScreen extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        // test to see if the reader works
+        /*WordReader testWordReader = new WordReader(getApplicationContext());
+        ArrayList<String> testList = testWordReader.readWords("black");
+        TextView testView = (TextView) findViewById(R.id.test);
+        testView.setText(testList.get(1));*/
+
+        ScoreData testScoreData = new ScoreData(getApplicationContext());
+        float testScore = (float) 0.0;
+        testScoreData.add(new Player("Joris Schefold", testScore, ""));
+
+        ScoreData testScoreData2 = new ScoreData(getApplicationContext());
+        ArrayList<Player> testList = testScoreData2.getList();
+        TextView testView = (TextView) findViewById(R.id.test);
+        testView.setText(testList.get(1).getName());
+
+        for (Player player : testList) {
+            System.out.println(player.getName());
+        }
+
+
     }
 
     @Override
@@ -49,5 +74,11 @@ public class HomeScreen extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void playGame(View view) {
+        Intent playGame = new Intent(this, GameActivity.class);
+        startActivity(playGame);
+
     }
 }
