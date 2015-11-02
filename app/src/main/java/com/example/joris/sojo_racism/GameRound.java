@@ -24,12 +24,12 @@ public class GameRound{
     Button leftButton;
 
 
-    public GameRound(String[] leftCatagoryList0, String[] rightCatagoryList0,
-                     int numbers, Activity activ){
+    public  GameRound(String[] leftCatagoryList0, String[] rightCatagoryList0,
+                     int numbersRuns, Activity activ){
 
         leftCatagoryList = leftCatagoryList0;
         rightCatagoryList = rightCatagoryList0;
-        maxRunNuber = numbers;
+        maxRunNuber = numbersRuns;
         gameActiv = activ;
         wordView = (TextView) activ.findViewById(R.id.categoryElementTextView);
         rightButton = (Button) activ.findViewById(R.id.rightGameButton);
@@ -37,44 +37,24 @@ public class GameRound{
     }
 
 
-    View.OnClickListener correctInput = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            nexWord();
-        }
-    };
+    public boolean isFinished(){
+        return runNumber >= maxRunNuber;
+    }
 
-    View.OnClickListener falseInput = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            String word = (String) wordView.getText();
-            word = word + "!!!";
-            wordView.setText(word);
-        }
-    };
-
-
-    public boolean nexWord(){
-        if (runNumber >= maxRunNuber){
-//            Do something
-            return false;
-        }
+    public int nexWord(){
 
         String word;
+        runNumber ++;
+
 //        Randomly chose to pick a entry for the right catagories (>.5) or the left
         if (randomGenerator.nextFloat() > .5){
             word = rightCatagoryList[randomGenerator.nextInt(rightCatagoryList.length)];
             wordView.setText(word);
-            rightButton.setOnClickListener(correctInput);
-            leftButton.setOnClickListener(falseInput);
-
+            return 0;
         }else{
             word = leftCatagoryList[randomGenerator.nextInt(leftCatagoryList.length)];
             wordView.setText(word);
-            rightButton.setOnClickListener(falseInput);
-            leftButton.setOnClickListener(correctInput);
+            return 1;
         }
-        runNumber ++;
-        return true;
     }
 }
