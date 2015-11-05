@@ -1,13 +1,10 @@
 package com.example.joris.sojo_racism;
 
 import android.app.Activity;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
-
 import java.util.Random;
+
 
 /**
  * Created by joris on 10/29/2015.
@@ -56,5 +53,9 @@ public class GameRound{
             wordView.setText(word);
             return 1;
         }
+    }
+
+    public int getRunNumber(){
+        return runNumber;
     }
 }
