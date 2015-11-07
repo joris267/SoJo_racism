@@ -99,7 +99,7 @@ public class GameActivity extends AppCompatActivity {
     View.OnClickListener correctTimedInput = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            double ellapsedTime = System.nanoTime(); +
+            double ellapsedTime = System.nanoTime();
             switch (roundNumber){
                 case 3:
                     round3List[currentRound.getRunNumber()] = ellapsedTime;
@@ -205,7 +205,7 @@ public class GameActivity extends AppCompatActivity {
 
 
     private double calculateScore(){
-        double upperCutoff 10000;
+        double upperCutoff = 10000;
         double lowerCutoff = 400;
 
         double round3Mean = calulateMean(round3List, upperCutoff, lowerCutoff);
@@ -242,7 +242,7 @@ public class GameActivity extends AppCompatActivity {
                 giveExplenation();
                 leftCatagoryTextView.setText("Pleasant");
                 rightCatagoryTextView.setText("Unpleasant");
-                currentRound = new GameRound(pleasant, unpleasant, , this);
+                currentRound = new GameRound(pleasant, unpleasant, 10, this);
                 nextWord();
                 break;
             case 1:

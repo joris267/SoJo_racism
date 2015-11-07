@@ -1,5 +1,6 @@
 package com.example.joris.sojo_racism;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -38,20 +39,26 @@ public class HomeScreen extends AppCompatActivity {
         TextView testView = (TextView) findViewById(R.id.test);
         testView.setText(testList.get(1));*/
 
-        ScoreData testScoreData = new ScoreData(getApplicationContext());
+
+        // test to see if the data communication workds (readin/writing new player data)
+        /*ScoreData testScoreData = new ScoreData(getApplicationContext());
         float testScore = (float) 0.0;
-        testScoreData.add(new Player("Joris Schefold", testScore, ""));
+        float testScore2 = (float) 2.0;
+        Player joris = new Player("Joris Schefold", testScore, "");
+        Player frits = new Player("Fritsje Papi", testScore2, "");
+        Player jan = new Player("Jan Janssen", testScore2, "");
+        testScoreData.add(joris);
+        testScoreData.add(frits);
+        testScoreData.add(jan);
 
         ScoreData testScoreData2 = new ScoreData(getApplicationContext());
         ArrayList<Player> testList = testScoreData2.getList();
         TextView testView = (TextView) findViewById(R.id.test);
-        testView.setText(testList.get(1).getName());
-
+        testView.setText(testList.get(30).getDate());
+        System.out.println(testList.size());
         for (Player player : testList) {
-            System.out.println(player.getName());
-        }
-
-
+            System.out.println(player.getName() + " hoi");
+        }*/
     }
 
     @Override

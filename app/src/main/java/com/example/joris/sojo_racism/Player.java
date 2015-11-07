@@ -40,8 +40,9 @@ public class Player{
     public void setDate() {
         /* Obtain current date and format into dd-mm-yyyy. */
         Calendar c = Calendar.getInstance();
-        SimpleDateFormat df = new SimpleDateFormat("dd-mm-yyyy", Locale.ENGLISH);
+        SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
         date = df.format(c.getTime());
+        System.out.println(date);
     }
 
     /* Method for getting the name if the player. */
