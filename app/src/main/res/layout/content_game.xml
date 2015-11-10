@@ -42,7 +42,7 @@
 
     </LinearLayout>
 
-
+<!--Textview for the questions-->
     <TextView
         android:layout_width="100dp"
         android:layout_height="wrap_content"
@@ -51,7 +51,31 @@
         android:layout_below="@+id/linearLayout"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="31dp"
+        android:contentDescription="Word"
         android:id="@+id/categoryElementTextView"/>
+
+<!--Imageview for the pictures, needs to come on same place as textview-->
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:id="@+id/catagoryElementImageview"
+        android:layout_below="@+id/linearLayout"
+        android:visibility="invisible"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="31dp"
+        android:contentDescription="Image"
+        android:scaleType="centerInside"/>
+
+<!--imageview for the red cross if an error was made-->
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/errorImageview"
+        android:src="@drawable/red_cross"
+        android:visibility="invisible"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="Cross"
+        android:layout_below="@+id/catagoryElementImageview"/>
 
     <!-- The layout for the buttons-->
     <LinearLayout

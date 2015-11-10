@@ -2,12 +2,12 @@ package com.example.joris.sojo_racism;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
@@ -17,18 +17,31 @@ public class GameActivity extends AppCompatActivity {
     TextView leftCatagoryTextView;
     TextView rightCatagoryTextView;
     TextView wordView;
+    ImageView imageView;
+    ImageView errorView;
     GameRound currentRound;
     int roundNumber = 0;
-    String[] pleasant = {"good0", "good1", "good2"};
-    String[] unpleasant = {"bad0", "bad1", "bad2"};
-    String[] white = {"white0", "white1", "white2"};
-    String[] black = {"black0", "black1", "black2"};
-    int shortRound = 20;
-    int longRound = 40;
+    String[] pleasant = {"caress", "freedom", "health", "love", "peace", "cheer", "friend",
+            "heaven", "loyal", "pleasure", "diamond", "gentle", "honest", "lucky", "rainbow",
+            "diploma", "gift", "honor", "miracle", "sunrise", "family", "happy", "laughter",
+            "paradise", "vacation"};
+
+    String[] unpleasant = {"abuse", "crash", "filth", "murder", "sickness", "accident", "death",
+            "grief", "poison", "stink", "assault", "disaster", "hatred", "pollute", "tragedy", "bomb",
+            "divorce"};
+
+    int[] white = {R.drawable.avrg_austrian, R.drawable.avrg_french, R.drawable.avrg_ireland,
+            R.drawable.avrg_russian, R.drawable.avrg_swiss, R.drawable.avrg_wjite_american};
+    int[] black = {R.drawable.avrg_etheopian, R.drawable.avrg_african_american, R.drawable.avrg_central_africa,
+            R.drawable.avrg_etheopianf, R.drawable.avrg_south_afrika, R.drawable.avrg_west_african};
+
+    int shortRound = 5;
+    int longRound = 10;
     double[] round3List = new double[shortRound];
     double[] round4List = new double[longRound];
     double[] round6List = new double[shortRound];
     double[] round7List = new double[longRound];
+    double startTime;
 
 
     @Override
@@ -43,6 +56,8 @@ public class GameActivity extends AppCompatActivity {
         leftCatagoryTextView = (TextView) findViewById(R.id.leftGameCatagory);
         rightCatagoryTextView = (TextView) findViewById(R.id.rightGameCatagory);
         wordView = (TextView) findViewById(R.id.categoryElementTextView);
+        imageView = (ImageView) findViewById(R.id.catagoryElementImageview);
+        errorView = (ImageView) findViewById(R.id.errorImageview);
 
 //        Read word lists
 //        Instructions
@@ -74,51 +89,50 @@ public class GameActivity extends AppCompatActivity {
 
 
 
-    View.OnClickListener correctInput = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            if (currentRound.isFinished()){
-                nextRound();
-            }else{
-                nextWord();
-            }
-        }
-    };
+//    View.OnClickListener correctInput = new View.OnClickListener() {
+//        @Override
+//        public void onClick(View view) {
+//            if (currentRound.isFinished()){
+//                nextRound();
+//            }else{
+//                nextWord();
+//            }
+//        }
+//    };
 
     View.OnClickListener falseInput = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            String word = (String) wordView.getText();
-            word = word + "!!!";
-            wordView.setText(word);
+            errorView.setVisibility(View.VISIBLE);
         }
     };
 
 
 
-    View.OnClickListener correctTimedInput = new View.OnClickListener() {
+    View.OnClickListener correctInput = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            double ellapsedTime = System.nanoTime();
+            double ellapsedTime = (startTime - System.nanoTime()) * 1000; //Convert time to ms.
             switch (roundNumber){
                 case 3:
-                    round3List[currentRound.getRunNumber()] = ellapsedTime;
+                    //Needs to be minus one since this starts at 0 and run number starts at 1!
+                    round3List[currentRound.getRunNumber()-1] = ellapsedTime;
                     break;
                 case 4:
-                    round4List[currentRound.getRunNumber()] = ellapsedTime;
+                    round4List[currentRound.getRunNumber()-1] = ellapsedTime;
                     break;
                 case 6:
-                    round6List[currentRound.getRunNumber()] = ellapsedTime;
+                    round6List[currentRound.getRunNumber()-1] = ellapsedTime;
                     break;
                 case 7:
-                    round7List[currentRound.getRunNumber()] = ellapsedTime;
+                    round7List[currentRound.getRunNumber()-1] = ellapsedTime;
                     break;
 
             }
             if (currentRound.isFinished()){
                 nextRound();
             }else{
-                nextMeasuredWord();
+                nextWord();
             }
         }
     };
@@ -131,7 +145,7 @@ public class GameActivity extends AppCompatActivity {
                 .setMessage("Press the buttons")
                 .setPositiveButton("Ok got it", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-//                        Cool you get it
+                        nextWord();
                     }
                 })
                 .setIcon(android.R.drawable.ic_dialog_alert)
@@ -139,8 +153,9 @@ public class GameActivity extends AppCompatActivity {
     }
 
 
-
     private void nextWord(){
+        errorView.setVisibility(View.INVISIBLE);
+        startTime = System.nanoTime();
         if (currentRound.nexWord() == 0){
             rightButton.setOnClickListener(correctInput);
             leftButton.setOnClickListener(falseInput);
@@ -151,16 +166,15 @@ public class GameActivity extends AppCompatActivity {
     }
 
 
-
-    private void nextMeasuredWord(){
-        if (currentRound.nexWord() == 0){
-            rightButton.setOnClickListener(correctTimedInput);
-            leftButton.setOnClickListener(falseInput);
-        }else{
-            rightButton.setOnClickListener(falseInput);
-            leftButton.setOnClickListener(correctTimedInput);
-        }
-    }
+//    private void nextMeasuredWord(){
+//        if (currentRound.nexWord() == 0){
+//            rightButton.setOnClickListener(correctTimedInput);
+//            leftButton.setOnClickListener(falseInput);
+//        }else{
+//            rightButton.setOnClickListener(falseInput);
+//            leftButton.setOnClickListener(correctTimedInput);
+//        }
+//    }
 
 
     private double calulateMean(double[] list, double upperCutoff, double lowerCutoff){
@@ -174,6 +188,7 @@ public class GameActivity extends AppCompatActivity {
         }
         return total/validEntries;
     }
+
 
     private double calulateSTDV(double[] list, double upperCutoff, double lowerCutoff) {
         double total = 0;
@@ -235,6 +250,7 @@ public class GameActivity extends AppCompatActivity {
         return (weightedDifference36 + weightedDifference47)/2.0;
     }
 
+
     private void nextRound(){
 
         switch (roundNumber){
@@ -242,36 +258,54 @@ public class GameActivity extends AppCompatActivity {
                 giveExplenation();
                 leftCatagoryTextView.setText("Pleasant");
                 rightCatagoryTextView.setText("Unpleasant");
-                currentRound = new GameRound(pleasant, unpleasant, 10, this);
-                nextWord();
+                currentRound = new GameRound(pleasant, unpleasant, shortRound, this);
                 break;
             case 1:
                 giveExplenation();
                 leftCatagoryTextView.setText("White");
                 rightCatagoryTextView.setText("Black");
-                currentRound = new GameRound(white, black, 10, this);
-                nextWord();
+                currentRound = new GameRound(white, black, shortRound, this);
                 break;
             case 2:
+                giveExplenation();
                 leftCatagoryTextView.setText("White \n or \n unpleasant");
                 rightCatagoryTextView.setText("Black \n or \n pleasant");
-                currentRound = new GameRound(combineStringArray(unpleasant, white), combineStringArray(pleasant, black), 10, this);
-                nextWord();
+                currentRound = new GameRound(unpleasant, white, pleasant, black, shortRound, this);
                 break;
             case 3:
+                giveExplenation();
+                leftCatagoryTextView.setText("White \n or \n unpleasant");
+                rightCatagoryTextView.setText("Black \n or \n pleasant");
+                currentRound = new GameRound(unpleasant, white, pleasant, black, longRound, this);
                 break;
             case 4:
+                giveExplenation();
+                leftCatagoryTextView.setText("Black");
+                rightCatagoryTextView.setText("White");
+                currentRound = new GameRound(black, white, shortRound, this);
                 break;
             case 5:
+                giveExplenation();
+                leftCatagoryTextView.setText("Black \n or \n unpleasant");
+                rightCatagoryTextView.setText("White \n or \n pleasant");
+                currentRound = new GameRound(unpleasant, black, pleasant, white, shortRound, this);
                 break;
             case 6:
+                giveExplenation();
+                leftCatagoryTextView.setText("Black \n or \n unpleasant");
+                rightCatagoryTextView.setText("White \n or \n pleasant");
+                currentRound = new GameRound(unpleasant, black, pleasant, white, longRound, this);
                 break;
             case 7:
-                Intent finished = new Intent(this, HighscoreActivity.class);
-                startActivity(finished);
+                double gameScore = calculateScore();
+                imageView.setVisibility(View.INVISIBLE);
+                wordView.setText(String.valueOf(gameScore));
+//                Intent finished = new Intent(this, HighscoreActivity.class);
+//                startActivity(finished);
 
         }
         roundNumber++;
+
 //        Calculate score and go to highscores
     }
 
