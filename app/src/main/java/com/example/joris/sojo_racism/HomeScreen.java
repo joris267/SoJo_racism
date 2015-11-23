@@ -1,6 +1,18 @@
+/* HomeScreen Class
+ * Class type: Activity
+ *
+ * Class implements all methods that navigate to the different options in the homeScreen menu.
+ *
+ * Authors: Michiel Boswijk & Joris Schefold
+ * Contact: michiel.boswijk@gmail.com
+ * Last updated: 23-11-2015
+ */
+
+/* Reference package. */
 package com.example.joris.sojo_racism;
 
-import android.content.Context;
+/* Necessary imports. */
+import android.app.DialogFragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -10,55 +22,20 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
-
-import java.util.ArrayList;
 
 public class HomeScreen extends AppCompatActivity {
 
+/*------------------------------------------------------------------------------------------------*/
+/* Override Methods                                                                               */
+/*------------------------------------------------------------------------------------------------*/
+
+    /* Method called on creation of the class. */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        /* Call constructor superclass and link layout file. */
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
-        // test to see if the reader works
-        /*WordReader testWordReader = new WordReader(getApplicationContext());
-        ArrayList<String> testList = testWordReader.readWords("black");
-        TextView testView = (TextView) findViewById(R.id.test);
-        testView.setText(testList.get(1));*/
-
-
-        // test to see if the data communication workds (readin/writing new player data)
-        /*ScoreData testScoreData = new ScoreData(getApplicationContext());
-        float testScore = (float) 0.0;
-        float testScore2 = (float) 2.0;
-        Player joris = new Player("Joris Schefold", testScore, "");
-        Player frits = new Player("Fritsje Papi", testScore2, "");
-        Player jan = new Player("Jan Janssen", testScore2, "");
-        testScoreData.add(joris);
-        testScoreData.add(frits);
-        testScoreData.add(jan);
-
-        ScoreData testScoreData2 = new ScoreData(getApplicationContext());
-        ArrayList<Player> testList = testScoreData2.getList();
-        TextView testView = (TextView) findViewById(R.id.test);
-        testView.setText(testList.get(30).getDate());
-        System.out.println(testList.size());
-        for (Player player : testList) {
-            System.out.println(player.getName() + " hoi");
-        }*/
     }
 
     @Override
@@ -83,9 +60,44 @@ public class HomeScreen extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+/*------------------------------------------------------------------------------------------------*/
+/* Navigation Methods                                                                             */
+/*------------------------------------------------------------------------------------------------*/
+
+    /* Method navigates to the activity that starts the name selection before the test. */
     public void playGame(View view) {
+
         Intent playGame = new Intent(this, GameActivity.class);
         startActivity(playGame);
+    }
 
+    /* Method shows dialog showing the 'about us' information. */
+    public void showAboutUs(View view) {
+
+        DialogFragment aboutUs = new AboutUs();
+        aboutUs.show(getFragmentManager(), "dialog");
+    }
+
+    /* Method shows dialog showing the 'how to play' information. */
+    public void showHowToPlay(View view) {
+
+        DialogFragment howToPlay = new HowToPlay();
+        howToPlay.show(getFragmentManager(), "dialog");
+    }
+
+    /* Method navigates to the activity that allows the user to change the game mode. */
+    public void changeMode(View view) {
+    }
+
+    /* Method navigates to the activity that shows all saved scores. */
+    public void showScores(View view) {
+    }
+
+    /* Method shows dialog showing the score explanation. */
+    public void showScoreExplanation(View view) {
+    }
+
+    /* Method shows dialog showing the different personalities used to categorize the users. */
+    public void showPersonalities(View view) {
     }
 }

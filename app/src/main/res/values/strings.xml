@@ -4,4 +4,31 @@
     <string name="title_activity_game">GameActivity</string>
     <string name="rightGameButtonText">Right</string>
     <string name="leftGameButtonText">Left</string>
+
+    <string name="msg_welcome">Welcome\nto the \nImplicit Racism Test!</string>
+    <string name="msg_about_us">Hey guys we\'re SoJo.\n\nWe are a group of students from different
+    disciplines who like to mess around with apps that have some cultural relevance. This is the first
+    app we made, but we hope to make many more. For any feedback or remarks you can contact us @ !insert contact info!.\n\nCheers!\n\nThe SoJo Team.</string>
+    <string name="msg_howtoplay">Implicit Racism\n\nThis test was designed to test implicit racism. Most people believe that they
+        are not biased towards any race, which also shows through the way they act: They never say bad things about people based on their
+        race and do not overgeneralise. However, even these people still might implicitly associate more good things with
+        people from their own race and bad things with other races. This is called implicit racism. The same principle
+         can be applied to other prejudices as well, like sexism or homophobia.\n\nHow does it work?\n\nWe measure the
+        difference in time you take to respond in each set of questions. The difference between the time taken for you to
+        respond between the two sections makes your score. Then with some tech wizardry (statistics) we work out how subconsciously
+        racist/sexist you are!\n\nHow do I take the test?\n\nYou take the test by associating words/images to the right category. For
+        instance, there might be a \'good\' and a \'bad\' category to which you would assign the words \'pleasure\' and \'pain\'
+        respectively. You will also have to assign words/images to shared categories. For instance, there might be a \'white AND bad\'
+        category to which you would assign images containing caucasians and words like \'pleasure\', and another category containing the
+        opposites of this category. When you assign something to the wrong category, you will be notified by the presentation
+        of a red cross. Then you will have to assign the word/image to the other category (be fast!).\n\nGood Luck!</string>
+
+    <string name="btn_about">About Us</string>
+    <string name="btn_got_it">Got It!</string>
+    <string name="btn_howtoplay">How Does It Work?</string>
+    <string name="btn_startgame">Start Game!</string>
+    <string name="btn_mode">Change Mode</string>
+    <string name="btn_scores">View Scores</string>
+    <string name="btn_scoresexplained">Score Explanation</string>
+    <string name="btn_personalities">Personalities</string>
 </resources>
