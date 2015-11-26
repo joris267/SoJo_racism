@@ -1,6 +1,17 @@
+/* ScoreData class
+ * Class type: Helper class
+ *
+ * Class implements object for reading to and writing from the player data text file.
+ *
+ * Authors: Michiel Boswijk & Joris Schefold
+ * Contact: michiel.boswijk@gmail.com
+ * Last updated: 23-11-2015
+ */
 
+/* Reference package. */
 package com.example.joris.sojo_racism;
 
+/* Necessary imports. */
 import android.content.Context;
 import android.widget.Toast;
 
@@ -9,14 +20,14 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-// TODO: Add does not work yet
-
 public class ScoreData {
 
-    private final String PLAYER_DATA_FILE =  "player_data_file";
+    /* Initialize/Declare class variables. */
+    private final String PLAYER_DATA_FILE = "player_data_file";
     private ArrayList<Player> players;
     private Context context;
 
+    /* Constructor initializes class variables and reads all data from the .txt file. */
     public ScoreData(Context context) {
 
         this.context = context;
@@ -26,6 +37,7 @@ public class ScoreData {
 
     /* Method for reading names from the txt file. */
     public void readPlayerData() {
+
         /* Declare local variables. */
         Scanner myScanner;
         String playerInfo, name, date;
@@ -36,6 +48,7 @@ public class ScoreData {
             myScanner = new Scanner(context.openFileInput(PLAYER_DATA_FILE));
             while (myScanner.hasNextLine()) {
                 playerInfo = myScanner.nextLine();
+
                 /* Since names, scores and dates are divided by a comma in the txt file,
                  * the line is split on spaces and the data is added in a new player to the list.
                  */

@@ -1,14 +1,12 @@
-/* HowToPlay Class
+/* ScoreExplanation Class
  * Class type: Dialog
  *
- * Class implements a dialog showing the information about how to play the game.
+ * Class implements a dialog showing the information about the scores en their categories.
  *
  * Authors: Michiel Boswijk & Joris Schefold
  * Contact: michiel.boswijk@gmail.com
- * Last updated: 23-11-2015
+ * Last updated: 25-11-2015
  */
-
-//TODO: Add some links to broader theme that is the Implicit Association Test (like the ones Freddy posted on Slack).
 
 /* Reference package. */
 package com.example.joris.sojo_racism;
@@ -21,7 +19,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 
-public class HowToPlay extends DialogFragment {
+public class ScoreExplanation extends DialogFragment {
 
     /* Method called on creation of the dialog. */
     @Override
@@ -32,7 +30,7 @@ public class HowToPlay extends DialogFragment {
 
         /* Create new dialog, and set message. */
         AlertDialog.Builder ackAlert = new AlertDialog.Builder(context);
-        String message = getString(R.string.msg_howtoplay);
+        String message = getString(R.string.msg_score_explanation);
         ackAlert.setMessage(message);
 
         /* Create button in dialog. */
@@ -44,7 +42,7 @@ public class HowToPlay extends DialogFragment {
         });
 
         /* Set title and show dialog. */
-        ackAlert.setTitle("How does it work?");
+        ackAlert.setTitle("Am I a racist?");
         ackAlert.create();
 
         return ackAlert.create();

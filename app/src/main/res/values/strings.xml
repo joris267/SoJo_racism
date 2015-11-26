@@ -22,6 +22,14 @@
         category to which you would assign images containing caucasians and words like \'pleasure\', and another category containing the
         opposites of this category. When you assign something to the wrong category, you will be notified by the presentation
         of a red cross. Then you will have to assign the word/image to the other category (be fast!).\n\nGood Luck!</string>
+    
+    <string name="msg_score_explanation">What does my score mean, am I really a racist?\n\nWell yes and no.
+        The test uses implicit association to work out if you associate one group of people over another in
+        a favourable way. However, it is entirely subconscious. This means that while you may say and believe
+        you are not a racist, you may find it easier to associate one group with good words and another
+        group with bad words. This is often due to cultural and media influences. The most important thing is
+        to be conscious about the way you think and talk about people from a different race/ethnicity/sex etc. The
+        test is not designed to accuse anyone, but merely to increase consciousness in a fun way.</string>
 
     <string name="btn_about">About Us</string>
     <string name="btn_got_it">Got It!</string>

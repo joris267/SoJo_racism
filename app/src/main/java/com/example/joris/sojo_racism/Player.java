@@ -1,11 +1,12 @@
-/*
- * Player class
+/* Player Class
+ * Class type: Helper class
  *
- * Class implements a player object.
- * A player has a name, score and 'last played' date.
+ * Class implements the a player in the game. A player is created once the test is completed.
+ * At that point, the player has a name, score and a date on which the test was taken.
  *
- * Author: Michiel Boswijk, michiel.boswijk@gmail.com
- * Last updated: 16-10-2015
+ * Authors: Michiel Boswijk & Joris Schefold
+ * Contact: michiel.boswijk@gmail.com
+ * Last updated: 23-11-2015
  */
 
 package com.example.joris.sojo_racism;
@@ -16,7 +17,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
-// Might need to make it comparable  (implements Comparable<Player>)
+//TODO: Check if we want to make it comparable (if we want to sort players depending on one of their properties)
 
 public class Player{
 
