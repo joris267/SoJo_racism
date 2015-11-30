@@ -23,7 +23,13 @@
             android:label="@string/title_activity_game"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
-        <activity android:name=".HighscoreActivity" >
+        <activity
+            android:name=".HighscoreActivity"
+            android:label="@string/title_activity_scores">
+        </activity>
+        <activity
+            android:name=".InfoInput"
+            android:label="@string/title_activity_info_input" >
         </activity>
     </application>
 

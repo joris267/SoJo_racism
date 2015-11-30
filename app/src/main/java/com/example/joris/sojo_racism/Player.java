@@ -11,8 +11,7 @@
 
 package com.example.joris.sojo_racism;
 
-import android.support.annotation.NonNull;
-
+/* Necessary imports. */
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;

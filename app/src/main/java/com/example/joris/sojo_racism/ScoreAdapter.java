@@ -9,6 +9,8 @@
  * Last updated: 23-11-2015
  */
 
+//TODO: Check of context nodig is (ivm met de warning)
+
 /* Reference package. */
 package com.example.joris.sojo_racism;
 

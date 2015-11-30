@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">SoJo_racism</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_game">GameActivity</string>
     <string name="rightGameButtonText">Right</string>
     <string name="leftGameButtonText">Left</string>
 
@@ -22,7 +21,6 @@
         category to which you would assign images containing caucasians and words like \'pleasure\', and another category containing the
         opposites of this category. When you assign something to the wrong category, you will be notified by the presentation
         of a red cross. Then you will have to assign the word/image to the other category (be fast!).\n\nGood Luck!</string>
-    
     <string name="msg_score_explanation">What does my score mean, am I really a racist?\n\nWell yes and no.
         The test uses implicit association to work out if you associate one group of people over another in
         a favourable way. However, it is entirely subconscious. This means that while you may say and believe
@@ -39,4 +37,8 @@
     <string name="btn_scores">View Scores</string>
     <string name="btn_scoresexplained">Score Explanation</string>
     <string name="btn_personalities">Personalities</string>
+
+    <string name="title_activity_game">Test</string>
+    <string name="title_activity_info_input">Your Information</string>
+    <string name="title_activity_scores">Scores</string>
 </resources>
